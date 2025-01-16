@@ -1,0 +1,138 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  width: 100%;
+}
+
+.main-content {
+  width: 67%;
+  padding: 20px;
+}
+
+.scratch-pad {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 33%;
+  height: 90%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fafafa;
+  border-left: 2px solid #ddd;
+  overflow: hidden; /* Remove scrolling from the container */
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.scratch-pad textarea {
+  width: 100%; /* Fill container width */
+  height: 100%; /* Fill container height */
+  border: none;
+  border-left: 2px solid #ddd; /* Left border */
+  border-right: 2px solid #ddd; /* Right border */
+  border-bottom: 2px solid #ddd; /* Bottom border */
+  resize: none; /* Prevent resizing */
+  padding: 10px;
+  font-size: 1em;
+  line-height: 1.6;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden; /* Prevent scrolling in the textarea */
+  box-sizing: border-box; /* Include padding and borders in width/height */
+}
+
+h1 {
+  color: #5cb85c;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.input-container label {
+  margin: 0 10px;
+}
+
+.question {
+  font-size: 1.5em;
+  margin: 20px;
+  text-align: center;
+}
+
+input[type="number"] {
+  font-size: 1em;
+  padding: 5px;
+  margin: 0 10px;
+}
+
+button {
+  font-size: 1em;
+  padding: 10px 15px;
+  margin: 10px;
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4cae4c;
+}
+
+.feedback {
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.positive-feedback {
+  position: fixed;
+  font-size: 3em;
+  animation: fly-across 2s ease-in-out;
+}
+
+@keyframes fly-across {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+.score-board {
+  font-size: 1.5em;
+  margin: 20px;
+  text-align: center;
+}
+
+.competition-mode {
+  margin: 20px;
+}
