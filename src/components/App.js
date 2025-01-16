@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ScratchPad from './ScratchPad';
 import Question from './Question';
 import { generateRandomQuestion } from '../utils/mathUtils';
+import { isTablet } from 'react-device-detect';
 import '../App.css';
 
 const App = () => {
@@ -9,6 +10,16 @@ const App = () => {
   const [operation, setOperation] = useState('both');
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [feedback, setFeedback] = useState('');
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024 && !isTablet);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 1024 && !isTablet);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleMaxValueChange = (event) => {
     setMaxValue(Number(event.target.value));
@@ -61,7 +72,7 @@ const App = () => {
   return (
     <div className="app-container">
       <div className="main-content">
-        <h1>Math Quest: Unicorns and Rainbows</h1>
+        {feedback && <div className="feedback">{feedback}</div>}
         <div className="input-container">
           <label>
             Max Value:
@@ -77,9 +88,8 @@ const App = () => {
           </label>
         </div>
         <Question operation={operation} min={0} max={maxValue} onAnswer={handleAnswer} />
-        <div className="feedback">{feedback}</div>
       </div>
-      <ScratchPad />
+      {isDesktop && <ScratchPad />}
     </div>
   );
 };

@@ -13,12 +13,15 @@ const Question = ({ operation, min, max, onAnswer }) => {
       onAnswer(false);
     }
     setUserAnswer('');
+    // Keep focus on the input box
+    document.getElementById('answer-input').focus();
   };
 
   return (
     <div className="question">
       <h2>{questionData.question}</h2>
       <input
+        id="answer-input"
         type="number"
         placeholder="Your answer"
         value={userAnswer}
@@ -28,6 +31,7 @@ const Question = ({ operation, min, max, onAnswer }) => {
             handleAnswer();
           }
         }}
+        autoFocus
       />
       <button onClick={handleAnswer}>Submit</button>
     </div>
